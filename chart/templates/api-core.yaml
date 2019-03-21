@@ -1,0 +1,165 @@
+# ----------------------------------------
+# Service: api-core
+# ----------------------------------------
+apiVersion: v1
+kind: Service
+metadata:
+  name: api-core-web
+  labels:
+    app.kubernetes.io/name: {{ include "beam.name" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/service: api-core
+    app.kubernetes.io/tier: api
+spec:
+  ports:
+    - port: 80
+      targetPort: 80
+  selector:
+    app.kubernetes.io/name: {{ include "beam.name" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/service: api-core
+    app.kubernetes.io/process: web
+---
+# ----------------------------------------
+# Deployment: api-core-web
+# ----------------------------------------
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-core-web
+  labels:
+    app.kubernetes.io/name: {{ include "beam.name" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/service: api-core
+    app.kubernetes.io/process: web
+    app.kubernetes.io/tier: api
+spec:
+  replicas: {{ .Values.apiCore.web.replicas }}
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ include "beam.name" . }}
+      app.kubernetes.io/instance: {{ .Release.Name }}
+      app.kubernetes.io/service: api-core
+      app.kubernetes.io/process: web      
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: {{ include "beam.name" . }}
+        app.kubernetes.io/instance: {{ .Release.Name }}
+        app.kubernetes.io/service: api-core
+        app.kubernetes.io/process: web
+    spec:
+      containers:
+        - name: web
+          image: "gcr.io/beam-au/api-core:{{ .Values.version }}"
+          imagePullPolicy: Always
+          envFrom:
+            - configMapRef:
+                name: service-configs
+            - secretRef:
+                name: service-secrets          
+          ports:
+              - containerPort: 80              
+          resources:
+            requests:
+              cpu: 50m
+              memory: {{ .Values.apiCore.web.memory }}
+---
+# ----------------------------------------
+# Deployment: api-core-schedule
+# ----------------------------------------
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-core-schedule
+  labels:
+    app.kubernetes.io/name: {{ include "beam.name" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/service: api-core
+    app.kubernetes.io/process: schedule
+    app.kubernetes.io/tier: api
+spec:
+  replicas: {{ .Values.apiCore.schedule.replicas }}
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ include "beam.name" . }}
+      app.kubernetes.io/instance: {{ .Release.Name }}
+      app.kubernetes.io/service: api-core
+      app.kubernetes.io/process: schedule    
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: {{ include "beam.name" . }}
+        app.kubernetes.io/instance: {{ .Release.Name }}
+        app.kubernetes.io/service: api-core
+        app.kubernetes.io/process: schedule
+        app.kubernetes.io/tier: api
+    spec:
+      containers:
+        - name: schedule
+          image: "gcr.io/beam-au/api-core:{{ .Values.version }}"
+          imagePullPolicy: Always
+          command: ["bash","-c"]
+          args: ["/var/entrypoints/schedule"]
+          envFrom:
+            - configMapRef:
+                name: service-configs
+            - secretRef:
+                name: service-secrets                    
+          ports:
+              - containerPort: 80
+          resources:
+            requests:
+              cpu: 50m
+              memory: {{ .Values.apiCore.schedule.memory }}
+---
+# ----------------------------------------
+# Deployment: api-core-horizon
+# ----------------------------------------
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-core-horizon
+  labels:
+    app.kubernetes.io/name: {{ include "beam.name" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/service: api-core
+    app.kubernetes.io/process: horizon
+    app.kubernetes.io/tier: api
+spec:
+  replicas: {{ .Values.apiCore.horizon.replicas }}
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ include "beam.name" . }}
+      app.kubernetes.io/instance: {{ .Release.Name }}
+      app.kubernetes.io/service: api-core
+      app.kubernetes.io/process: horizon    
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: {{ include "beam.name" . }}
+        app.kubernetes.io/instance: {{ .Release.Name }}
+        app.kubernetes.io/service: api-core
+        app.kubernetes.io/process: horizon
+        app.kubernetes.io/tier: api
+    spec:
+      containers:
+        - name: horizon
+          image: "gcr.io/beam-au/api-core:{{ .Values.version }}"
+          imagePullPolicy: Always
+          command: ["bash","-c"]
+          args: ["/var/entrypoints/horizon"]        
+          envFrom:
+            - configMapRef:
+                name: service-configs
+            - secretRef:
+                name: service-secrets                      
+          ports:
+              - containerPort: 80
+          resources:
+            requests:
+              cpu: 50m
+              memory: {{ .Values.apiCore.horizon.memory }}

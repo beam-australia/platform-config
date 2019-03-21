@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: service-configs
+  labels:
+    app.kubernetes.io/name: {{ include "beam.name" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+data:
+  PLATFORM_ENV: {{ .Values.configs.PLATFORM_ENV }}
+  API_HOST: {{ .Values.configs.API_HOST }}
+  WEB_ACCOUNTS_HOST: {{ .Values.configs.WEB_ACCOUNTS_HOST }}
+  REDIS_HOST: service-redis
+  DB_HOST: {{ .Values.configs.DB_HOST }}
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: service-secrets
+  labels:
+    app.kubernetes.io/name: {{ include "beam.name" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+type: Opaque
+data:
+  DB_PASSWORD: {{ .Values.secrets.DB_PASSWORD }}
+  API_KEY: {{ .Values.secrets.API_KEY }}

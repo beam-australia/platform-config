@@ -1,0 +1,12 @@
+gateway:
+  ip: "35.197.160.95"
+
+configs:
+  PLATFORM_ENV: development
+  API_HOST: "http://api.beamaustralia.dev"
+  WEB_ACCOUNTS_HOST: "http://accounts.beamaustralia.dev"
+  DB_HOST: "35.189.55.227"
+
+secrets:
+  DB_PASSWORD: "QWxwaGFDZW50YXVyaUlzQVN0YXI="
+  API_KEY: "YmFzZTY0OnF5KysvWlBtZzdqcDJld0tJWE1tL1RoTCs1VkdFbmlrZ2xhbkdnQ2ZCZFU9Cg=="

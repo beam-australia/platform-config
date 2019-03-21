@@ -1,0 +1,27 @@
+apiVersion: skaffold/v1beta7
+kind: Config
+deploy:
+  helm:
+    releases:
+
+      - name: production
+        chartPath: chart
+        wait: true
+        recreatePods: true
+        namespace: production
+        valuesFiles:
+          - chart/values.yaml
+          - chart/production.values.yaml
+        setValueTemplates:
+          version: "{{ .VERSION }}"
+
+      - name: staging
+        chartPath: chart
+        wait: true
+        recreatePods: true
+        namespace: staging
+        valuesFiles:
+          - chart/values.yaml
+          - chart/staging.values.yaml
+        setValueTemplates:
+          version: "{{ .VERSION }}"          
