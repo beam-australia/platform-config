@@ -7,7 +7,6 @@ metadata:
   name: api-core-web
   labels:
     app.kubernetes.io/name: {{ include "beam.name" . }}
-    app.kubernetes.io/version: {{ .Values.version }}
     app.kubernetes.io/service: api-core
     app.kubernetes.io/process: web
     app.kubernetes.io/tier: api
@@ -17,7 +16,6 @@ spec:
       targetPort: 80
   selector:
     app.kubernetes.io/name: {{ include "beam.name" . }}
-    app.kubernetes.io/version: {{ .Values.version }}
     app.kubernetes.io/service: api-core
     app.kubernetes.io/process: web
     app.kubernetes.io/tier: api
@@ -31,7 +29,6 @@ metadata:
   name: api-core-web
   labels:
     app.kubernetes.io/name: {{ include "beam.name" . }}
-    app.kubernetes.io/version: {{ .Values.version }}
     app.kubernetes.io/service: api-core
     app.kubernetes.io/process: web
     app.kubernetes.io/tier: api
@@ -41,7 +38,6 @@ spec:
   selector:
     matchLabels:
       app.kubernetes.io/name: {{ include "beam.name" . }}
-      app.kubernetes.io/version: {{ .Values.version }}
       app.kubernetes.io/service: api-core
       app.kubernetes.io/process: web
       app.kubernetes.io/tier: api  
@@ -49,7 +45,6 @@ spec:
     metadata:
       labels:
         app.kubernetes.io/name: {{ include "beam.name" . }}
-        app.kubernetes.io/version: {{ .Values.version }}
         app.kubernetes.io/service: api-core
         app.kubernetes.io/process: web
         app.kubernetes.io/tier: api
@@ -79,7 +74,6 @@ metadata:
   name: api-core-schedule
   labels:
     app.kubernetes.io/name: {{ include "beam.name" . }}
-    app.kubernetes.io/version: {{ .Values.version }}
     app.kubernetes.io/service: api-core
     app.kubernetes.io/process: schedule
     app.kubernetes.io/tier: api
@@ -89,7 +83,6 @@ spec:
   selector:
     matchLabels:
       app.kubernetes.io/name: {{ include "beam.name" . }}
-      app.kubernetes.io/version: {{ .Values.version }}
       app.kubernetes.io/service: api-core
       app.kubernetes.io/process: schedule
       app.kubernetes.io/tier: api  
@@ -97,7 +90,6 @@ spec:
     metadata:
       labels:
         app.kubernetes.io/name: {{ include "beam.name" . }}
-        app.kubernetes.io/version: {{ .Values.version }}
         app.kubernetes.io/service: api-core
         app.kubernetes.io/process: schedule
         app.kubernetes.io/tier: api
@@ -129,7 +121,6 @@ metadata:
   name: api-core-horizon
   labels:
     app.kubernetes.io/name: {{ include "beam.name" . }}
-    app.kubernetes.io/version: {{ .Values.version }}
     app.kubernetes.io/service: api-core
     app.kubernetes.io/process: horizon
     app.kubernetes.io/tier: api
@@ -139,7 +130,6 @@ spec:
   selector:
     matchLabels:
       app.kubernetes.io/name: {{ include "beam.name" . }}
-      app.kubernetes.io/version: {{ .Values.version }}
       app.kubernetes.io/service: api-core
       app.kubernetes.io/process: horizon
       app.kubernetes.io/tier: api  
@@ -147,7 +137,6 @@ spec:
     metadata:
       labels:
         app.kubernetes.io/name: {{ include "beam.name" . }}
-        app.kubernetes.io/version: {{ .Values.version }}
         app.kubernetes.io/service: api-core
         app.kubernetes.io/process: horizon
         app.kubernetes.io/tier: api
