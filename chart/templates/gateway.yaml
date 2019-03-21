@@ -7,6 +7,7 @@ metadata:
   name: gateway
   labels:
     app.kubernetes.io/name: {{ include "beam.name" . }}
+    app.kubernetes.io/version: {{ .Values.version }}
     app.kubernetes.io/service: gateway
     app.kubernetes.io/tier: network
 spec:
@@ -23,6 +24,7 @@ spec:
       targetPort: 443  
   selector:
     app.kubernetes.io/name: {{ include "beam.name" . }}
+    app.kubernetes.io/version: {{ .Values.version }}
     app.kubernetes.io/service: gateway
     app.kubernetes.io/tier: network
 ---
@@ -35,6 +37,7 @@ metadata:
   name: gateway
   labels:
     app.kubernetes.io/name: {{ include "beam.name" . }}
+    app.kubernetes.io/version: {{ .Values.version }}
     app.kubernetes.io/service: gateway
     app.kubernetes.io/tier: network
 spec:
@@ -43,12 +46,12 @@ spec:
   selector:
     matchLabels:
       app.kubernetes.io/name: {{ include "beam.name" . }}
+      app.kubernetes.io/version: {{ .Values.version }}
       app.kubernetes.io/service: gateway
       app.kubernetes.io/tier: network
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: {{ include "beam.name" . }}
         app.kubernetes.io/service: gateway
         app.kubernetes.io/tier: network
     spec:
