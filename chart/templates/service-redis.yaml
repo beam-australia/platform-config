@@ -16,7 +16,9 @@ spec:
       targetPort: 6379 
   selector:
     app.kubernetes.io/name: {{ include "beam.name" . }}
+    app.kubernetes.io/version: {{ .Values.version }}
     app.kubernetes.io/service: redis
+    app.kubernetes.io/tier: service
 ---
 # ----------------------------------------
 # Deployment
@@ -36,13 +38,16 @@ spec:
   selector:
     matchLabels:
       app.kubernetes.io/name: {{ include "beam.name" . }}
+      app.kubernetes.io/version: {{ .Values.version }}
       app.kubernetes.io/service: redis
+      app.kubernetes.io/tier: service
   template:
     metadata:
       labels:
         app.kubernetes.io/name: {{ include "beam.name" . }}
         app.kubernetes.io/version: {{ .Values.version }}
         app.kubernetes.io/service: redis
+        app.kubernetes.io/tier: service
     spec:
       containers:
         - name: web
