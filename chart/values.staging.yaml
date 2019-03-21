@@ -1,8 +1,8 @@
 gateway:
-  ip: "35.197.160.95"
+  ip: "35.247.174.50"
 
 configs:
-  PLATFORM_ENV: development
+  PLATFORM_ENV: staging
   API_HOST: "http://api.beamaustralia.dev"
   WEB_ACCOUNTS_HOST: "http://accounts.beamaustralia.dev"
   DB_HOST: "35.189.55.227"

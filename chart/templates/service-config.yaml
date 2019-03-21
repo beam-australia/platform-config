@@ -4,7 +4,7 @@ metadata:
   name: service-configs
   labels:
     app.kubernetes.io/name: {{ include "beam.name" . }}
-    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/version: {{ .Values.version }}
 data:
   PLATFORM_ENV: {{ .Values.configs.PLATFORM_ENV }}
   API_HOST: {{ .Values.configs.API_HOST }}
@@ -18,7 +18,7 @@ metadata:
   name: service-secrets
   labels:
     app.kubernetes.io/name: {{ include "beam.name" . }}
-    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/version: {{ .Values.version }}
 type: Opaque
 data:
   DB_PASSWORD: {{ .Values.secrets.DB_PASSWORD }}

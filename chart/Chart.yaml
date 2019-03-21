@@ -1,4 +1,4 @@
 apiVersion: v1
 name: beam
 description: Beam platform chart
-version: 0.1.0
+version: 0.2.0
