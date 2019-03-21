@@ -16,7 +16,6 @@ spec:
       targetPort: 80
   selector:
     app.kubernetes.io/name: {{ include "beam.name" . }}
-    app.kubernetes.io/version: {{ .Values.version }}
     app.kubernetes.io/service: api-core
     app.kubernetes.io/process: web
 ---
@@ -39,7 +38,6 @@ spec:
   selector:
     matchLabels:
       app.kubernetes.io/name: {{ include "beam.name" . }}
-      app.kubernetes.io/version: {{ .Values.version }}
       app.kubernetes.io/service: api-core
       app.kubernetes.io/process: web      
   template:
@@ -85,7 +83,6 @@ spec:
   selector:
     matchLabels:
       app.kubernetes.io/name: {{ include "beam.name" . }}
-      app.kubernetes.io/version: {{ .Values.version }}
       app.kubernetes.io/service: api-core
       app.kubernetes.io/process: schedule    
   template:
@@ -134,7 +131,6 @@ spec:
   selector:
     matchLabels:
       app.kubernetes.io/name: {{ include "beam.name" . }}
-      app.kubernetes.io/version: {{ .Values.version }}
       app.kubernetes.io/service: api-core
       app.kubernetes.io/process: horizon    
   template:

@@ -24,7 +24,6 @@ spec:
       targetPort: 443  
   selector:
     app.kubernetes.io/name: {{ include "beam.name" . }}
-    app.kubernetes.io/version: {{ .Values.version }}
     app.kubernetes.io/service: gateway
 ---
 # ----------------------------------------
@@ -45,7 +44,6 @@ spec:
   selector:
     matchLabels:
       app.kubernetes.io/name: {{ include "beam.name" . }}
-      app.kubernetes.io/version: {{ .Values.version }}
       app.kubernetes.io/service: gateway
   template:
     metadata:
