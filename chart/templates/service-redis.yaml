@@ -15,10 +15,8 @@ spec:
     - port: 6379
       targetPort: 6379 
   selector:
-    app.kubernetes.io/name: {{ include "beam.name" . }}
-    app.kubernetes.io/version: {{ .Values.version }}
-    app.kubernetes.io/service: redis
-    app.kubernetes.io/tier: service
+      app.kubernetes.io/service: redis
+      app.kubernetes.io/tier: service
 ---
 # ----------------------------------------
 # Deployment

@@ -16,11 +16,9 @@ spec:
     - port: 80
       targetPort: 80
   selector:
-    app.kubernetes.io/name: {{ include "beam.name" . }}
-    app.kubernetes.io/version: {{ .Values.version }}
     app.kubernetes.io/service: api-core
     app.kubernetes.io/process: web
-    app.kubernetes.io/tier: api
+    app.kubernetes.io/tier: api  
 ---
 # ----------------------------------------
 # Deployment: api-core-web
