@@ -1,0 +1,19 @@
+#!/bin/bash
+
+set -e
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+CLUSTER_PATH=$DIR/../cluster
+
+echo "Initializing namespaces..."
+
+kubectl apply -f $CLUSTER_PATH/namespaces.yaml
+
+echo "Initializing cluster..."
+
+kubectl apply -f $CLUSTER_PATH
+
+echo "Initializing tiller..."
+
+helm init --service-account tiller --history-max 50

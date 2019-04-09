@@ -3,8 +3,9 @@ gateway:
 
 configs:
   PLATFORM_ENV: production
-  API_HOST: "http://api.beamaustralia.com.au"
-  WEB_ACCOUNTS_HOST: "http://accounts.beamaustralia.com.au"
+  API_HOST: "https://api.beamaustralia.dev"
+  UPLOADS_HOST: "https://uploads.beamaustralia.dev"
+  WEB_ACCOUNTS_HOST: "https://accounts.beamaustralia.dev"
   DB_HOST: "35.189.55.227"
 
 secrets:

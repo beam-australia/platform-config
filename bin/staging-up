@@ -1,0 +1,13 @@
+#!/bin/bash
+
+set -e
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+CHART_PATH=$DIR/../chart
+
+helm install staging $CHART_PATH \
+    --recreate-pods \
+    --namespace=staging \
+    --values=$CHART_PATH/values.yaml,$CHART_PATH/values.staging.yaml \
+    --set version=${1}

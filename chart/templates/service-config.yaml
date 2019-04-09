@@ -9,6 +9,7 @@ data:
   PLATFORM_ENV: {{ .Values.configs.PLATFORM_ENV }}
   API_HOST: {{ .Values.configs.API_HOST }}
   WEB_ACCOUNTS_HOST: {{ .Values.configs.WEB_ACCOUNTS_HOST }}
+  UPLOADS_HOST: {{ .Values.configs.UPLOADS_HOST }}
   REDIS_HOST: service-redis
   DB_HOST: {{ .Values.configs.DB_HOST }}
 ---

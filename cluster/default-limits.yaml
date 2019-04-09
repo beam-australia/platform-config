@@ -1,0 +1,21 @@
+apiVersion: 'v1'
+kind: 'LimitRange'
+metadata:
+  name: 'limits'
+  namespace: production
+spec:
+  limits:
+    - type: 'Container'
+      defaultRequest:
+        cpu: '50m'
+---
+apiVersion: 'v1'
+kind: 'LimitRange'
+metadata:
+  name: 'limits'
+  namespace: staging
+spec:
+  limits:
+    - type: 'Container'
+      defaultRequest:
+        cpu: '50m'
