@@ -9,5 +9,5 @@ configs:
   DB_HOST: "35.189.55.227"
 
 secrets:
-  DB_PASSWORD: "QWxwaGFDZW50YXVyaUlzQVN0YXI="
+  DB_PASSWORD: "R2lhbnRTd2FtcE1hdHRyZXNzNDI="
   API_KEY: "YmFzZTY0OnF5KysvWlBtZzdqcDJld0tJWE1tL1RoTCs1VkdFbmlrZ2xhbkdnQ2ZCZFU9Cg=="
