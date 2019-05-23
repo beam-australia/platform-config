@@ -45,7 +45,7 @@ spec:
     spec:
       containers:
         - name: web
-          image: "gcr.io/beam-au/tusd:0.6.0"
+          image: "gcr.io/beamaustralia/tusd:0.6.0"
           imagePullPolicy: IfNotPresent
           ports:
               - containerPort: 80

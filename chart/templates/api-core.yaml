@@ -50,7 +50,7 @@ spec:
     spec:
       containers:
         - name: web
-          image: "gcr.io/beam-au/api-core:{{ .Values.version }}"
+          image: "gcr.io/beamaustralia/api-core:{{ .Values.version }}"
           imagePullPolicy: Always
           envFrom:
             - configMapRef:
@@ -94,7 +94,7 @@ spec:
     spec:
       containers:
         - name: schedule
-          image: "gcr.io/beam-au/api-core:{{ .Values.version }}"
+          image: "gcr.io/beamaustralia/api-core:{{ .Values.version }}"
           imagePullPolicy: Always
           command: ["bash","-c"]
           args: ["/var/entrypoints/schedule"]
@@ -140,7 +140,7 @@ spec:
     spec:
       containers:
         - name: horizon
-          image: "gcr.io/beam-au/api-core:{{ .Values.version }}"
+          image: "gcr.io/beamaustralia/api-core:{{ .Values.version }}"
           imagePullPolicy: Always
           command: ["bash","-c"]
           args: ["/var/entrypoints/horizon"]        
