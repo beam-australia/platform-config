@@ -31,7 +31,7 @@ metadata:
     app.kubernetes.io/service: web-staff
     app.kubernetes.io/tier: web
 spec:
-  replicas: {{ .Values.webAccounts.replicas }}
+  replicas: {{ .Values.webStaff.replicas }}
   revisionHistoryLimit: 3
   selector:
     matchLabels:
@@ -57,4 +57,4 @@ spec:
           resources:
             requests:
               cpu: 50m
-              memory: {{ .Values.webAccounts.memory }}
+              memory: {{ .Values.webStaff.memory }}

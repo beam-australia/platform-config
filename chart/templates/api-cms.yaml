@@ -1,51 +1,51 @@
 # ----------------------------------------
-# Service
+# Service: api-cms
 # ----------------------------------------
 apiVersion: v1
 kind: Service
 metadata:
-  name: web-public
+  name: api-cms
   labels:
     app.kubernetes.io/name: {{ include "beam.name" . }}
     app.kubernetes.io/version: {{ .Values.version }}
-    app.kubernetes.io/service: web-public
-    app.kubernetes.io/tier: web
+    app.kubernetes.io/service: api-cms
+    app.kubernetes.io/tier: api
 spec:
   ports:
     - port: 80
-      targetPort: 3000
+      targetPort: 80
   selector:
-    app.kubernetes.io/service: web-public
-    app.kubernetes.io/tier: web
+    app.kubernetes.io/service: api-cms
+    app.kubernetes.io/tier: api  
 ---
 # ----------------------------------------
-# Deployment
+# Deployment: api-cms
 # ----------------------------------------
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: web-public
+  name: api-cms
   labels:
     app.kubernetes.io/name: {{ include "beam.name" . }}
     app.kubernetes.io/version: {{ .Values.version }}
-    app.kubernetes.io/service: web-public
-    app.kubernetes.io/tier: web
+    app.kubernetes.io/service: api-cms
+    app.kubernetes.io/tier: api
 spec:
-  replicas: {{ .Values.webPublic.replicas }}
+  replicas: {{ .Values.apiCms.replicas }}
   revisionHistoryLimit: 3
   selector:
     matchLabels:
-      app.kubernetes.io/service: web-public
-      app.kubernetes.io/tier: web
+      app.kubernetes.io/service: api-cms
+      app.kubernetes.io/tier: api
   template:
     metadata:
       labels:
-        app.kubernetes.io/service: web-public
-        app.kubernetes.io/tier: web
+        app.kubernetes.io/service: api-cms
+        app.kubernetes.io/tier: api
     spec:
       containers:
         - name: web
-          image: "gcr.io/beamaustralia/web-public:{{ .Values.version }}"
+          image: "gcr.io/beamaustralia/api-cms:{{ .Values.version }}"
           imagePullPolicy: Always
           envFrom:
             - configMapRef:
@@ -53,8 +53,8 @@ spec:
             - secretRef:
                 name: service-secrets          
           ports:
-              - containerPort: 3000
+              - containerPort: 80              
           resources:
             requests:
               cpu: 50m
-              memory: {{ .Values.webPublic.memory }}
+              memory: {{ .Values.apiCms.memory }}

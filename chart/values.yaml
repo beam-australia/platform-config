@@ -16,9 +16,21 @@ apiCore:
     replicas: 1
     memory: 128Mi
 
+apiCms:
+  replicas: 1
+  memory: 128Mi
+
 webAccounts:
   replicas: 1
   memory: 128Mi
+
+webStaff:
+  replicas: 1
+  memory: 128Mi
+
+webPublic:
+  replicas: 1
+  memory: 128Mi    
 
 configs: {}
 

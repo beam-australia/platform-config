@@ -6,6 +6,9 @@ configs:
   API_HOST: "https://api.beamaustralia.dev"
   UPLOADS_HOST: "https://uploads.beamaustralia.dev"
   WEB_ACCOUNTS_HOST: "https://accounts.beamaustralia.dev"
+  WEB_STAFF_HOST: "http://staff.beamaustralia.dev"
+  WEB_PUBLIC_HOST: "http://beamaustralia.dev"
+  WEB_CMS_HOST: "http://cms.beamaustralia.dev"  
   DB_HOST: "35.189.55.227"
 
 secrets:
