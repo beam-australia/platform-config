@@ -65,5 +65,5 @@ spec:
               - containerPort: 443
           resources:
             requests:
-              cpu: 50m
+              cpu: 25m
               memory: {{ .Values.gateway.memory }}

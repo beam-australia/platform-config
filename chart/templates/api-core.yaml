@@ -61,7 +61,7 @@ spec:
               - containerPort: 80              
           resources:
             requests:
-              cpu: 50m
+              cpu: 25m
               memory: {{ .Values.apiCore.web.memory }}
 ---
 # ----------------------------------------
@@ -107,7 +107,7 @@ spec:
               - containerPort: 80
           resources:
             requests:
-              cpu: 50m
+              cpu: 25m
               memory: {{ .Values.apiCore.schedule.memory }}
 ---
 # ----------------------------------------
@@ -153,5 +153,5 @@ spec:
               - containerPort: 80
           resources:
             requests:
-              cpu: 50m
+              cpu: 25m
               memory: {{ .Values.apiCore.horizon.memory }}
