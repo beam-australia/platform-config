@@ -22,11 +22,11 @@ apiCms:
 
 webAccounts:
   replicas: 1
-  memory: 128Mi
+  memory: 64Mi
 
 webStaff:
   replicas: 1
-  memory: 128Mi
+  memory: 64Mi
 
 webPublic:
   replicas: 1
