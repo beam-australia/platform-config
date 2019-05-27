@@ -11,7 +11,7 @@ apiCore:
     memory: 128Mi
   schedule:
     replicas: 1
-    memory: 128Mi
+    memory: 64Mi
   horizon:
     replicas: 1
     memory: 128Mi
@@ -30,7 +30,7 @@ webStaff:
 
 webPublic:
   replicas: 1
-  memory: 128Mi    
+  memory: 64Mi    
 
 configs: {}
 
