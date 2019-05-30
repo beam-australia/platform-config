@@ -13,7 +13,7 @@ metadata:
 spec:
   ports:
     - port: 80
-      targetPort: 3000
+      targetPort: 80
   selector:
     app.kubernetes.io/service: web-accounts
     app.kubernetes.io/tier: web

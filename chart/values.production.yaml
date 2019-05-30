@@ -3,6 +3,8 @@ gateway:
 
 configs:
   PLATFORM_ENV: production
+  NODE_ENV: production
+  API_ENV: production
   API_HOST: "https://api.beamaustralia.dev"
   UPLOADS_HOST: "https://uploads.beamaustralia.dev"
   WEB_ACCOUNTS_HOST: "https://accounts.beamaustralia.dev"
@@ -13,4 +15,4 @@ configs:
 
 secrets:
   DB_PASSWORD: "R2lhbnRTd2FtcE1hdHRyZXNzNDI="
-  API_KEY: "YmFzZTY0OnF5KysvWlBtZzdqcDJld0tJWE1tL1RoTCs1VkdFbmlrZ2xhbkdnQ2ZCZFU9Cg=="
+  API_KEY: "YmFzZTY0OlNHM2daejRDVjVvM0o4UjZZZ0FKQi94TkFyT3dqSzFzVkxGU0tNVWE2R1E9"
